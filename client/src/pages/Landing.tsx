@@ -88,31 +88,48 @@ export default function Landing() {
       <PublicNavigation />
       
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary to-primary/90 text-primary-foreground">
+      <section className="relative bg-gradient-to-r from-primary to-primary/90 text-primary-foreground overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
+        {/* Background Image */}
+        <div className="absolute inset-0 opacity-10">
+          <img 
+            src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+            alt="Financial Success" 
+            className="w-full h-full object-cover"
+          />
+        </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-          <div className="text-center">
-            <h1 className="text-4xl lg:text-6xl font-bold mb-6">Fix Your Credit Now</h1>
-            <p className="text-xl lg:text-2xl mb-8 max-w-3xl mx-auto">
-              Schedule Your FREE Consultation Call Below{" "}
-              <span className="line-through opacity-70">($99.95 value)</span>
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <ConsultationForm
-                trigger={
-                  <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-lg px-8">
-                    Schedule Free Consultation
-                  </Button>
-                }
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="text-center lg:text-left">
+              <h1 className="text-4xl lg:text-6xl font-bold mb-6">Fix Your Credit Now</h1>
+              <p className="text-xl lg:text-2xl mb-8">
+                Schedule Your FREE Consultation Call Below{" "}
+                <span className="line-through opacity-70">($99.95 value)</span>
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <Button 
+                  size="lg" 
+                  className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-lg px-8"
+                  onClick={() => scrollToSection('#consultation')}
+                >
+                  Schedule Free Consultation
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary font-bold text-lg px-8"
+                  onClick={() => scrollToSection('#services')}
+                >
+                  Learn More
+                </Button>
+              </div>
+            </div>
+            <div className="hidden lg:block">
+              <img 
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                alt="Happy Credit Repair Client" 
+                className="rounded-lg shadow-2xl"
               />
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary font-bold text-lg px-8"
-                onClick={() => scrollToSection('#services')}
-              >
-                Learn More
-              </Button>
             </div>
           </div>
         </div>
