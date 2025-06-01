@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Teal/Turquoise primary colors */
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  /* Primary: Teal/Turquoise */
+  --primary: 188 95% 42%; /* #0891b2 */
+  --primary-foreground: 0 0% 98%;
+  --secondary: 60 4.8% 95.9%;
+  --secondary-foreground: 24 9.8% 10%;
+  /* Accent: Gold/Yellow */
+  --accent: 45 93% 47%; /* #f59e0b */
+  --accent-foreground: 20 14.3% 4.1%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 20 14.3% 4.1%;
+  --radius: 0.5rem;
+  --chart-1: 188 95% 42%;
+  --chart-2: 45 93% 47%;
+  --chart-3: 142 76% 36%;
+  --chart-4: 0 84% 60%;
+  --chart-5: 262 83% 58%;
+}
+
+.dark {
+  --background: 224 71% 4%; /* #0f172a */
+  --foreground: 213 31% 91%; /* #e2e8f0 */
+  --muted: 223 47% 11%; /* #1e293b */
+  --muted-foreground: 215.4 16.3% 56.9%; /* #64748b */
+  --popover: 224 71% 4%;
+  --popover-foreground: 213 31% 91%;
+  --card: 224 71% 4%;
+  --card-foreground: 213 31% 91%;
+  --border: 216 34% 17%; /* #334155 */
+  --input: 216 34% 17%;
+  /* Primary: Lighter teal for dark mode */
+  --primary: 188 86% 53%; /* #06b6d4 */
+  --primary-foreground: 224 71% 4%;
+  --secondary: 223 47% 11%;
+  --secondary-foreground: 213 31% 91%;
+  /* Accent: Slightly muted gold for dark mode */
+  --accent: 45 93% 47%; /* #f59e0b */
+  --accent-foreground: 224 71% 4%;
+  --destructive: 0 63% 31%;
+  --destructive-foreground: 213 31% 91%;
+  --ring: 216 34% 17%;
+  --chart-1: 188 86% 53%;
+  --chart-2: 45 93% 47%;
+  --chart-3: 142 69% 58%;
+  --chart-4: 0 63% 31%;
+  --chart-5: 262 83% 58%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
