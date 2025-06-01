@@ -118,9 +118,9 @@ export default function Landing() {
                   variant="outline" 
                   size="lg" 
                   className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary font-bold text-lg px-8"
-                  onClick={() => scrollToSection('#services')}
+                  onClick={() => window.location.href = '/signup'}
                 >
-                  Learn More
+                  Apply for Membership
                 </Button>
               </div>
             </div>
@@ -261,11 +261,9 @@ export default function Landing() {
                   </div>
                   <p className="text-muted-foreground mb-6">"{testimonial.content}"</p>
                   <div className="flex items-center">
-                    <img 
-                      src={testimonial.avatar} 
-                      alt={testimonial.name}
-                      className="w-12 h-12 rounded-full mr-4 object-cover"
-                    />
+                    <div className="w-12 h-12 rounded-full mr-4 bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white font-bold">
+                      {testimonial.initials}
+                    </div>
                     <div>
                       <div className="font-bold">{testimonial.name}</div>
                       <div className="text-muted-foreground">{testimonial.role}</div>

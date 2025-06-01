@@ -87,6 +87,26 @@ export function Documents() {
         return;
       }
 
+      // Validate credit report file types
+      const validTypes = [
+        'application/pdf', 
+        'text/plain', 
+        'text/csv', 
+        'application/vnd.ms-excel',
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        'text/xml',
+        'application/xml'
+      ];
+      
+      if (!validTypes.includes(file.type)) {
+        toast({
+          title: "Unsupported File Type",
+          description: "Please upload PDF, TXT, CSV, Excel, or XML files. These formats are supported by major credit bureaus (Experian, Equifax, TransUnion).",
+          variant: "destructive"
+        });
+        return;
+      }
+
       uploadMutation.mutate(file);
     }
   };

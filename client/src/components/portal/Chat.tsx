@@ -141,14 +141,13 @@ export function Chat() {
       <Card className="flex-1 flex flex-col">
         <CardHeader className="flex-row items-center space-y-0 p-4 border-b">
           <Avatar className="h-10 w-10 mr-3">
-            <AvatarImage src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&h=50" />
-            <AvatarFallback>SJ</AvatarFallback>
+            <AvatarFallback className="bg-gradient-to-br from-teal-500 to-teal-600 text-white font-bold">AI</AvatarFallback>
           </Avatar>
           <div>
-            <p className="font-semibold">Sarah Johnson</p>
+            <p className="font-semibold">TC Credit AI Assistant</p>
             <p className="text-sm text-emerald-500 flex items-center">
               <Circle className="h-2 w-2 mr-1 fill-current" />
-              Online - Credit Specialist
+              Online - AI-Powered Credit Support
             </p>
           </div>
         </CardHeader>
