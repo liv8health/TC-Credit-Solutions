@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
+import { Progress as ProgressBar } from "@/components/ui/progress";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export function Progress() {
@@ -72,7 +72,7 @@ export function Progress() {
               <span>Negative Items Removed</span>
               <span className="font-semibold">12/18</span>
             </div>
-            <Progress value={67} className="h-2" />
+            <ProgressBar value={67} className="h-2" />
             <p className="text-sm text-muted-foreground mt-1">
               67% of disputed items successfully removed
             </p>
@@ -83,7 +83,7 @@ export function Progress() {
               <span>Disputes in Progress</span>
               <span className="font-semibold">6 active</span>
             </div>
-            <Progress value={33} className="h-2" />
+            <ProgressBar value={33} className="h-2" />
             <p className="text-sm text-muted-foreground mt-1">
               6 disputes currently being processed
             </p>

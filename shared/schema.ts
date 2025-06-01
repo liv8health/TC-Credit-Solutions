@@ -50,7 +50,7 @@ export const consultations = pgTable("consultations", {
   currentCreditScore: varchar("current_credit_score"),
   primaryGoal: varchar("primary_goal"),
   timeline: varchar("timeline"),
-  negativeItems: jsonb("negative_items").$type<string[]>(),
+  negativeItems: text("negative_items").array(),
   additionalComments: text("additional_comments"),
   status: varchar("status").$type<"pending" | "contacted" | "scheduled" | "completed">().default("pending"),
   createdAt: timestamp("created_at").defaultNow(),
