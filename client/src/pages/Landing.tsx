@@ -348,7 +348,7 @@ export default function Landing() {
                   </div>
                   <Button 
                     className={`w-full ${plan.popular ? 'bg-accent hover:bg-accent/90' : ''}`}
-                    onClick={() => window.location.href = '/api/login'}
+                    onClick={() => window.open('https://sqr.co/TCCreditCall/', '_blank')}
                   >
                     Get Started
                   </Button>
