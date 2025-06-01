@@ -5,6 +5,7 @@ import {
   documents,
   creditProgress,
   contactSubmissions,
+  userApplications,
   type User,
   type UpsertUser,
   type InsertConsultation,
@@ -16,6 +17,8 @@ import {
   type CreditProgress,
   type InsertContactSubmission,
   type ContactSubmission,
+  type InsertUserApplication,
+  type UserApplication,
 } from "@shared/schema";
 import { db } from "./db";
 import { eq, desc, and } from "drizzle-orm";
@@ -47,6 +50,12 @@ export interface IStorage {
   // Contact operations
   createContactSubmission(contact: InsertContactSubmission): Promise<ContactSubmission>;
   getContactSubmissions(): Promise<ContactSubmission[]>;
+  
+  // User application operations
+  createUserApplication(application: InsertUserApplication): Promise<UserApplication>;
+  getUserApplications(): Promise<UserApplication[]>;
+  getUserApplicationByEmail(email: string): Promise<UserApplication | undefined>;
+  updateApplicationStatus(id: number, status: "pending" | "approved" | "rejected", notes?: string, reviewerId?: string): Promise<void>;
 }
 
 export class DatabaseStorage implements IStorage {

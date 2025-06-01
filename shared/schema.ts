@@ -34,9 +34,25 @@ export const users = pgTable("users", {
   profileImageUrl: varchar("profile_image_url"),
   membershipTier: varchar("membership_tier").$type<"single" | "couples" | "vip">(),
   membershipStatus: varchar("membership_status").$type<"active" | "inactive" | "suspended">().default("inactive"),
+  approvalStatus: varchar("approval_status").$type<"pending" | "approved" | "rejected">().default("pending"),
   joinDate: timestamp("join_date").defaultNow(),
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+// User applications for admin approval
+export const userApplications = pgTable("user_applications", {
+  id: serial("id").primaryKey(),
+  email: varchar("email").unique().notNull(),
+  firstName: varchar("first_name").notNull(),
+  lastName: varchar("last_name").notNull(),
+  phone: varchar("phone"),
+  membershipTier: varchar("membership_tier").$type<"single" | "couples" | "vip">().default("single"),
+  status: varchar("status").$type<"pending" | "approved" | "rejected">().default("pending"),
+  notes: text("notes"),
+  submittedAt: timestamp("submitted_at").defaultNow(),
+  reviewedAt: timestamp("reviewed_at"),
+  reviewedBy: varchar("reviewed_by"),
 });
 
 // Consultation requests
@@ -154,9 +170,19 @@ export const insertContactSubmissionSchema = createInsertSchema(contactSubmissio
   createdAt: true,
 });
 
+export const insertUserApplicationSchema = createInsertSchema(userApplications).omit({
+  id: true,
+  status: true,
+  submittedAt: true,
+  reviewedAt: true,
+  reviewedBy: true,
+});
+
 // Types
 export type UpsertUser = typeof users.$inferInsert;
 export type User = typeof users.$inferSelect;
+export type InsertUserApplication = z.infer<typeof insertUserApplicationSchema>;
+export type UserApplication = typeof userApplications.$inferSelect;
 export type InsertConsultation = z.infer<typeof insertConsultationSchema>;
 export type Consultation = typeof consultations.$inferSelect;
 export type InsertChatMessage = z.infer<typeof insertChatMessageSchema>;
