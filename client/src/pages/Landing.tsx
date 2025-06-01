@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { ConsultationForm } from "@/components/ConsultationForm";
 import { PublicNavigation } from "@/components/PublicNavigation";
 import { useToast } from "@/hooks/use-toast";
@@ -114,14 +115,35 @@ export default function Landing() {
                 >
                   Schedule Free Consultation
                 </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg" 
-                  className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary font-bold text-lg px-8"
-                  onClick={() => window.location.href = '/signup'}
-                >
-                  Apply for Membership
-                </Button>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button 
+                      variant="outline" 
+                      size="lg" 
+                      className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary font-bold text-lg px-8"
+                    >
+                      Learn More
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-4xl">
+                    <DialogHeader>
+                      <DialogTitle>See How TC Credit Solutions Works</DialogTitle>
+                    </DialogHeader>
+                    <div className="aspect-video">
+                      <iframe 
+                        width="100%" 
+                        height="100%" 
+                        src="https://www.youtube.com/embed/zADj6VxsTWI?si=3voLQVscHQk0ghoM" 
+                        title="YouTube video player" 
+                        frameBorder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerPolicy="strict-origin-when-cross-origin" 
+                        allowFullScreen
+                        className="rounded-lg"
+                      />
+                    </div>
+                  </DialogContent>
+                </Dialog>
               </div>
             </div>
             <div className="hidden lg:block">
