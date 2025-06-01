@@ -54,13 +54,13 @@ export function PublicNavigation() {
             ))}
             <ThemeToggle />
             {isAuthenticated ? (
-              <Link href="/portal">
-                <Button>Member Portal</Button>
-              </Link>
+              <Button onClick={() => window.location.href = "https://www.secureclientaccess.com/"}>
+                Member Portal
+              </Button>
             ) : (
-              <Link href="/login">
-                <Button>Member Login</Button>
-              </Link>
+              <Button onClick={() => window.location.href = "https://www.secureclientaccess.com/"}>
+                Member Login
+              </Button>
             )}
           </div>
 
@@ -94,13 +94,19 @@ export function PublicNavigation() {
               </button>
             ))}
             {isAuthenticated ? (
-              <Link href="/portal">
-                <Button className="w-full mt-2">Member Portal</Button>
-              </Link>
+              <Button 
+                className="w-full mt-2"
+                onClick={() => window.location.href = "https://www.secureclientaccess.com/"}
+              >
+                Member Portal
+              </Button>
             ) : (
-              <Link href="/login">
-                <Button className="w-full mt-2">Member Login</Button>
-              </Link>
+              <Button 
+                className="w-full mt-2"
+                onClick={() => window.location.href = "https://www.secureclientaccess.com/"}
+              >
+                Member Login
+              </Button>
             )}
           </div>
         </div>

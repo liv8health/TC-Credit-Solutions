@@ -164,9 +164,9 @@ export default function Login() {
                 type="button"
                 variant="outline"
                 className="w-full"
-                onClick={() => window.location.href = "/api/login"}
+                onClick={() => window.location.href = "https://www.secureclientaccess.com/"}
               >
-                Use existing account access
+                Access Credit Repair Cloud Portal
               </Button>
             </div>
 

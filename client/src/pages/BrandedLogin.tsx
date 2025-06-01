@@ -4,7 +4,7 @@ import { Shield, ArrowRight, CheckCircle, Users, Award } from "lucide-react";
 
 export default function BrandedLogin() {
   const handleLogin = () => {
-    window.location.href = "/api/login";
+    window.location.href = "https://www.secureclientaccess.com/";
   };
 
   return (
