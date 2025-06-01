@@ -125,11 +125,13 @@ export default function Landing() {
               </div>
             </div>
             <div className="hidden lg:block">
-              <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                alt="Happy Credit Repair Client" 
-                className="rounded-lg shadow-2xl"
-              />
+              <div className="bg-gradient-to-br from-teal-500 to-teal-600 rounded-lg shadow-2xl p-8 text-white">
+                <div className="text-center">
+                  <TrendingUp className="h-16 w-16 mx-auto mb-4" />
+                  <h3 className="text-2xl font-bold mb-2">Credit Score Improvement</h3>
+                  <p className="text-lg">Professional credit repair services with proven results</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -146,11 +148,9 @@ export default function Landing() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="mb-6">
-                <img 
-                  src="https://images.unsplash.com/photo-1554224154-26032fced8bd?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
-                  alt="Credit Analysis" 
-                  className="w-32 h-32 object-cover rounded-lg mx-auto mb-4 shadow-lg"
-                />
+                <div className="bg-gradient-to-br from-teal-100 to-teal-200 dark:from-teal-800 dark:to-teal-900 w-32 h-32 rounded-lg mx-auto mb-4 shadow-lg flex items-center justify-center">
+                  <Target className="h-12 w-12 text-teal-600 dark:text-teal-300" />
+                </div>
                 <div className="bg-primary text-primary-foreground rounded-full w-16 h-16 flex items-center justify-center mx-auto -mt-8 relative z-10 shadow-lg">
                   <Target className="h-6 w-6" />
                 </div>
@@ -162,11 +162,9 @@ export default function Landing() {
             </div>
             <div className="text-center">
               <div className="mb-6">
-                <img 
-                  src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
-                  alt="Credit Repair Action" 
-                  className="w-32 h-32 object-cover rounded-lg mx-auto mb-4 shadow-lg"
-                />
+                <div className="bg-gradient-to-br from-amber-100 to-amber-200 dark:from-amber-800 dark:to-amber-900 w-32 h-32 rounded-lg mx-auto mb-4 shadow-lg flex items-center justify-center">
+                  <Wrench className="h-12 w-12 text-amber-600 dark:text-amber-300" />
+                </div>
                 <div className="bg-accent text-accent-foreground rounded-full w-16 h-16 flex items-center justify-center mx-auto -mt-8 relative z-10 shadow-lg">
                   <Wrench className="h-6 w-6" />
                 </div>
@@ -178,11 +176,9 @@ export default function Landing() {
             </div>
             <div className="text-center">
               <div className="mb-6">
-                <img 
-                  src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
-                  alt="Financial Success" 
-                  className="w-32 h-32 object-cover rounded-lg mx-auto mb-4 shadow-lg"
-                />
+                <div className="bg-gradient-to-br from-emerald-100 to-emerald-200 dark:from-emerald-800 dark:to-emerald-900 w-32 h-32 rounded-lg mx-auto mb-4 shadow-lg flex items-center justify-center">
+                  <TrendingUp className="h-12 w-12 text-emerald-600 dark:text-emerald-300" />
+                </div>
                 <div className="bg-emerald-500 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto -mt-8 relative z-10 shadow-lg">
                   <TrendingUp className="h-6 w-6" />
                 </div>
@@ -241,19 +237,19 @@ export default function Landing() {
                 name: "David Smith",
                 role: "Contractor",
                 content: "I was skeptical at first, only because I've paid for services in the past and they were a total rip off! In the first 45 days I had things falling off! They are the real deal! Thanks TC Credit!",
-                avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
+                initials: "DS"
               },
               {
                 name: "Mary Jane",
                 role: "Mompreneur", 
                 content: "Very smooth process! I uploaded my documents and they were working on my credit within 24 hours!",
-                avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b8b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
+                initials: "MJ"
               },
               {
                 name: "John Carrey",
                 role: "Business Owner",
                 content: "They got my student loans and repo off! Man o Man I can't thank TC Credit enough!!! I love you guys! Thanks for putting up with my impatience at times haha.",
-                avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
+                initials: "JC"
               }
             ].map((testimonial, index) => (
               <Card key={index} className="bg-card">

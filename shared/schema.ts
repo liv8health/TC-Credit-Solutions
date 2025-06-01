@@ -35,6 +35,8 @@ export const users = pgTable("users", {
   membershipTier: varchar("membership_tier").$type<"single" | "couples" | "vip">(),
   membershipStatus: varchar("membership_status").$type<"active" | "inactive" | "suspended">().default("inactive"),
   approvalStatus: varchar("approval_status").$type<"pending" | "approved" | "rejected">().default("pending"),
+  vboutApiKey: varchar("vbout_api_key"),
+  gohighlevelApiKey: varchar("gohighlevel_api_key"),
   joinDate: timestamp("join_date").defaultNow(),
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
