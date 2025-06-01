@@ -9,6 +9,7 @@ import {
   BookOpen, 
   CreditCard,
   ExternalLink,
+  UserCheck,
   LogOut
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -20,6 +21,7 @@ const navigation = [
   { name: "Progress", href: "/portal/progress", icon: TrendingUp },
   { name: "Resources", href: "/portal/resources", icon: BookOpen },
   { name: "Client Portal", href: "https://g6b8av5oic6p0hnirm8r.app.clientclub.net/login", icon: ExternalLink, external: true },
+  { name: "Admin Panel", href: "/portal/admin", icon: UserCheck },
   { name: "Billing", href: "/portal/billing", icon: CreditCard },
 ];
 

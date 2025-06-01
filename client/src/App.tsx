@@ -21,6 +21,7 @@ function Router() {
         <>
           <Route path="/" component={Landing} />
           <Route path="/login" component={BrandedLogin} />
+          <Route path="/signup" component={SignUp} />
         </>
       ) : (
         <>

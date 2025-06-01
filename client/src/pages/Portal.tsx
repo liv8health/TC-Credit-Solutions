@@ -9,6 +9,7 @@ import { Documents } from "@/components/portal/Documents";
 import { Progress } from "@/components/portal/Progress";
 import { Resources } from "@/components/portal/Resources";
 import { Billing } from "@/components/portal/Billing";
+import { AdminPanel } from "@/components/portal/AdminPanel";
 
 export default function Portal() {
   const { toast } = useToast();
@@ -50,6 +51,7 @@ export default function Portal() {
         <Route path="/portal/documents" component={Documents} />
         <Route path="/portal/progress" component={Progress} />
         <Route path="/portal/resources" component={Resources} />
+        <Route path="/portal/admin" component={AdminPanel} />
         <Route path="/portal/billing" component={Billing} />
         <Route component={Dashboard} />
       </Switch>
