@@ -145,8 +145,15 @@ export default function Landing() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="bg-primary text-primary-foreground rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
-                <Target className="h-8 w-8" />
+              <div className="mb-6">
+                <img 
+                  src="https://images.unsplash.com/photo-1554224154-26032fced8bd?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                  alt="Credit Analysis" 
+                  className="w-32 h-32 object-cover rounded-lg mx-auto mb-4 shadow-lg"
+                />
+                <div className="bg-primary text-primary-foreground rounded-full w-16 h-16 flex items-center justify-center mx-auto -mt-8 relative z-10 shadow-lg">
+                  <Target className="h-6 w-6" />
+                </div>
               </div>
               <h3 className="text-xl font-bold mb-4 text-primary">STEP 1 - GET PLAN</h3>
               <p className="text-muted-foreground">
@@ -154,8 +161,15 @@ export default function Landing() {
               </p>
             </div>
             <div className="text-center">
-              <div className="bg-accent text-accent-foreground rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
-                <Wrench className="h-8 w-8" />
+              <div className="mb-6">
+                <img 
+                  src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                  alt="Credit Repair Action" 
+                  className="w-32 h-32 object-cover rounded-lg mx-auto mb-4 shadow-lg"
+                />
+                <div className="bg-accent text-accent-foreground rounded-full w-16 h-16 flex items-center justify-center mx-auto -mt-8 relative z-10 shadow-lg">
+                  <Wrench className="h-6 w-6" />
+                </div>
               </div>
               <h3 className="text-xl font-bold mb-4 text-accent">STEP 2 - TAKE ACTION</h3>
               <p className="text-muted-foreground">
@@ -163,8 +177,15 @@ export default function Landing() {
               </p>
             </div>
             <div className="text-center">
-              <div className="bg-emerald-500 text-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
-                <TrendingUp className="h-8 w-8" />
+              <div className="mb-6">
+                <img 
+                  src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                  alt="Financial Success" 
+                  className="w-32 h-32 object-cover rounded-lg mx-auto mb-4 shadow-lg"
+                />
+                <div className="bg-emerald-500 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto -mt-8 relative z-10 shadow-lg">
+                  <TrendingUp className="h-6 w-6" />
+                </div>
               </div>
               <h3 className="text-xl font-bold mb-4 text-emerald-600 dark:text-emerald-400">STEP 3 - GET RESULTS</h3>
               <p className="text-muted-foreground">
@@ -340,6 +361,43 @@ export default function Landing() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Free Consultation */}
+      <section id="consultation" className="py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Schedule Your FREE Consultation</h2>
+            <p className="text-xl text-muted-foreground">
+              Take the first step towards improving your credit score
+            </p>
+            <p className="text-lg text-muted-foreground mt-2">
+              <span className="line-through opacity-70">$99.95 value</span> - Completely FREE
+            </p>
+          </div>
+          
+          <div className="bg-card rounded-lg shadow-lg p-8">
+            <script src="https://assets.makeforms.io/bundles/scripts/live/us/embed.js"></script>
+            <div id="enszxamfj" className="makeforms-js-embed">
+              <script
+                dangerouslySetInnerHTML={{
+                  __html: `new makeforms.Embed({ sourceId: "683cb199ae0e5fe7172a9505", root: "enszxamfj" }).build()`
+                }}
+              />
+              <style
+                dangerouslySetInnerHTML={{
+                  __html: `
+                    .makeforms-js-embed {
+                      position: relative;
+                      height: 100%;
+                      min-height: 500px;
+                    }
+                  `
+                }}
+              />
+            </div>
           </div>
         </div>
       </section>

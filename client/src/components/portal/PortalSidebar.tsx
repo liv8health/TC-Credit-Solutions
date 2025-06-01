@@ -8,6 +8,7 @@ import {
   TrendingUp, 
   BookOpen, 
   CreditCard,
+  ExternalLink,
   LogOut
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -18,6 +19,7 @@ const navigation = [
   { name: "Documents", href: "/portal/documents", icon: FileText },
   { name: "Progress", href: "/portal/progress", icon: TrendingUp },
   { name: "Resources", href: "/portal/resources", icon: BookOpen },
+  { name: "Client Portal", href: "https://g6b8av5oic6p0hnirm8r.app.clientclub.net/login", icon: ExternalLink, external: true },
   { name: "Billing", href: "/portal/billing", icon: CreditCard },
 ];
 
@@ -34,6 +36,20 @@ export function PortalSidebar() {
         {navigation.map((item) => {
           const Icon = item.icon;
           const isActive = location === item.href || (item.href !== "/portal" && location.startsWith(item.href));
+          
+          if (item.external) {
+            return (
+              <Button
+                key={item.name}
+                variant="ghost"
+                className="w-full justify-start"
+                onClick={() => window.open(item.href, '_blank')}
+              >
+                <Icon className="mr-3 h-4 w-4" />
+                {item.name}
+              </Button>
+            );
+          }
           
           return (
             <Link key={item.name} href={item.href}>
