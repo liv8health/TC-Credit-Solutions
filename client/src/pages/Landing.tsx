@@ -372,26 +372,17 @@ export default function Landing() {
             </p>
           </div>
           
-          <div className="bg-card rounded-lg shadow-lg p-8">
-            <script src="https://assets.makeforms.io/bundles/scripts/live/us/embed.js"></script>
-            <div id="enszxamfj" className="makeforms-js-embed">
-              <script
-                dangerouslySetInnerHTML={{
-                  __html: `new makeforms.Embed({ sourceId: "683cb199ae0e5fe7172a9505", root: "enszxamfj" }).build()`
-                }}
-              />
-              <style
-                dangerouslySetInnerHTML={{
-                  __html: `
-                    .makeforms-js-embed {
-                      position: relative;
-                      height: 100%;
-                      min-height: 500px;
-                    }
-                  `
-                }}
-              />
-            </div>
+          <div className="text-center">
+            <Button 
+              size="lg" 
+              className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-xl px-12 py-6"
+              onClick={() => window.open('http://bit.ly/TCCreditBlueprint', '_blank')}
+            >
+              Schedule Call
+            </Button>
+            <p className="text-sm text-muted-foreground mt-4">
+              Click to open our scheduling form with calendar availability
+            </p>
           </div>
         </div>
       </section>
