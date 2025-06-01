@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
@@ -40,6 +40,50 @@ type ContactFormData = z.infer<typeof contactSchema>;
 
 export default function Landing() {
   const { toast } = useToast();
+  const [showExitPopup, setShowExitPopup] = useState(false);
+  const [hasShownExitPopup, setHasShownExitPopup] = useState(false);
+  
+  // Exit intent detection
+  useEffect(() => {
+    const handleMouseLeave = (e: MouseEvent) => {
+      if (e.clientY <= 0 && !hasShownExitPopup) {
+        setShowExitPopup(true);
+        setHasShownExitPopup(true);
+      }
+    };
+
+    const handleBeforeUnload = () => {
+      if (!hasShownExitPopup) {
+        setShowExitPopup(true);
+        setHasShownExitPopup(true);
+      }
+    };
+
+    document.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    // Load AnyChat widget
+    const loadAnyChat = () => {
+      const script = document.createElement('script');
+      script.innerHTML = `
+        (function(d, s, id){
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = 'https://api.anychat.one/widget/04d00dd3-2056-3656-a8ad-24a22c6670ce?r=' + encodeURIComponent(window.location);
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'contactus-jssdk'));
+      `;
+      document.body.appendChild(script);
+    };
+
+    loadAnyChat();
+
+    return () => {
+      document.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, [hasShownExitPopup]);
   
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
@@ -589,6 +633,65 @@ export default function Landing() {
           </div>
         </div>
       </footer>
+
+      {/* Exit Intent Popup */}
+      <Dialog open={showExitPopup} onOpenChange={setShowExitPopup}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold text-center text-red-600">
+              Wait! Don't Leave Yet!
+            </DialogTitle>
+          </DialogHeader>
+          <div className="text-center space-y-4">
+            <div className="bg-gradient-to-r from-red-500 to-orange-500 text-white p-4 rounded-lg">
+              <h3 className="text-xl font-bold mb-2">🚨 SPECIAL OFFER 🚨</h3>
+              <p className="text-lg">
+                Get Your FREE 1-on-1 Credit Consultation
+              </p>
+              <p className="text-sm opacity-90">
+                Limited Time - Normally $99.95
+              </p>
+            </div>
+            <div className="space-y-2">
+              <p className="text-gray-600">
+                Before you go, let our credit experts show you exactly how to:
+              </p>
+              <ul className="text-left space-y-1 text-sm">
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                  Remove negative items from your credit report
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                  Boost your credit score by 100+ points
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                  Qualify for better rates and loans
+                </li>
+              </ul>
+            </div>
+            <div className="space-y-3">
+              <Button 
+                className="w-full bg-red-600 hover:bg-red-700 text-white font-bold text-lg py-3"
+                onClick={() => {
+                  window.open('https://sqr.co/TCCreditCall/', '_blank');
+                  setShowExitPopup(false);
+                }}
+              >
+                YES! Book My FREE Call Now
+              </Button>
+              <Button 
+                variant="outline" 
+                className="w-full"
+                onClick={() => setShowExitPopup(false)}
+              >
+                No thanks, I'll pass on this opportunity
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
