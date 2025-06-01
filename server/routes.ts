@@ -6,7 +6,7 @@ import path from "path";
 import fs from "fs";
 import { storage } from "./storage";
 import { setupAuth, isAuthenticated } from "./replitAuth";
-import { insertConsultationSchema, insertChatMessageSchema, insertContactSubmissionSchema } from "@shared/schema";
+import { insertConsultationSchema, insertChatMessageSchema, insertContactSubmissionSchema, insertUserApplicationSchema } from "@shared/schema";
 import { creditRepairAI } from "./aiService";
 
 // Configure multer for file uploads
@@ -214,6 +214,54 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Error fetching credit progress:", error);
       res.status(500).json({ message: "Failed to fetch credit progress" });
+    }
+  });
+
+  // User application routes
+  app.post('/api/applications', async (req, res) => {
+    try {
+      const applicationData = insertUserApplicationSchema.parse(req.body);
+      
+      // Check for existing application with same email
+      const existingApplication = await storage.getUserApplicationByEmail(applicationData.email);
+      if (existingApplication) {
+        return res.status(409).json({ message: "An application with this email already exists" });
+      }
+      
+      const application = await storage.createUserApplication(applicationData);
+      res.json(application);
+    } catch (error) {
+      console.error("Error creating user application:", error);
+      res.status(400).json({ message: "Invalid application data" });
+    }
+  });
+
+  // Admin routes for managing applications
+  app.get('/api/admin/applications', isAuthenticated, async (req, res) => {
+    try {
+      const applications = await storage.getUserApplications();
+      res.json(applications);
+    } catch (error) {
+      console.error("Error fetching applications:", error);
+      res.status(500).json({ message: "Failed to fetch applications" });
+    }
+  });
+
+  app.put('/api/admin/applications/:id/status', isAuthenticated, async (req: any, res) => {
+    try {
+      const applicationId = parseInt(req.params.id);
+      const { status, notes } = req.body;
+      const reviewerId = req.user.claims.sub;
+      
+      if (!status || !['pending', 'approved', 'rejected'].includes(status)) {
+        return res.status(400).json({ message: "Invalid status" });
+      }
+      
+      await storage.updateApplicationStatus(applicationId, status, notes, reviewerId);
+      res.json({ message: "Application status updated successfully" });
+    } catch (error) {
+      console.error("Error updating application status:", error);
+      res.status(500).json({ message: "Failed to update application status" });
     }
   });
 

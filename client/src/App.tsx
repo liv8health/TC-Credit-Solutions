@@ -9,6 +9,7 @@ import Landing from "@/pages/Landing";
 import Home from "@/pages/Home";
 import Portal from "@/pages/Portal";
 import BrandedLogin from "@/pages/BrandedLogin";
+import SignUp from "@/pages/SignUp";
 import NotFound from "@/pages/not-found";
 
 function Router() {

@@ -185,6 +185,39 @@ export class DatabaseStorage implements IStorage {
       .from(contactSubmissions)
       .orderBy(desc(contactSubmissions.createdAt));
   }
+
+  // User application operations
+  async createUserApplication(application: InsertUserApplication): Promise<UserApplication> {
+    const [created] = await db
+      .insert(userApplications)
+      .values(application)
+      .returning();
+    return created;
+  }
+
+  async getUserApplications(): Promise<UserApplication[]> {
+    return await db.select().from(userApplications).orderBy(desc(userApplications.submittedAt));
+  }
+
+  async getUserApplicationByEmail(email: string): Promise<UserApplication | undefined> {
+    const [application] = await db
+      .select()
+      .from(userApplications)
+      .where(eq(userApplications.email, email));
+    return application;
+  }
+
+  async updateApplicationStatus(id: number, status: "pending" | "approved" | "rejected", notes?: string, reviewerId?: string): Promise<void> {
+    await db
+      .update(userApplications)
+      .set({
+        status,
+        notes,
+        reviewedAt: new Date(),
+        reviewedBy: reviewerId,
+      })
+      .where(eq(userApplications.id, id));
+  }
 }
 
 export const storage = new DatabaseStorage();
