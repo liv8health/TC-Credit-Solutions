@@ -7,6 +7,7 @@ import fs from "fs";
 import { storage } from "./storage";
 import { setupAuth, isAuthenticated } from "./replitAuth";
 import { insertConsultationSchema, insertChatMessageSchema, insertContactSubmissionSchema } from "@shared/schema";
+import { creditRepairAI } from "./aiService";
 
 // Configure multer for file uploads
 const uploadDir = path.join(process.cwd(), 'uploads');
@@ -91,8 +92,53 @@ export async function registerRoutes(app: Express): Promise<Server> {
         userId,
         isFromTeam: false,
       });
-      const message = await storage.createChatMessage(messageData);
-      res.json(message);
+      
+      // Save user message
+      const userMessage = await storage.createChatMessage(messageData);
+      
+      // Generate AI response
+      const aiResponse = await creditRepairAI.generateResponse(messageData.message);
+      
+      // Save AI response if it's automated
+      if (aiResponse.type === 'automated') {
+        const aiMessageData = {
+          userId,
+          message: aiResponse.message,
+          isFromTeam: true,
+          teamMemberName: "TC Credit AI Assistant"
+        };
+        const aiMessage = await storage.createChatMessage(aiMessageData);
+        
+        // Broadcast AI response via WebSocket
+        wss.clients.forEach((client) => {
+          if (client.readyState === WebSocket.OPEN) {
+            client.send(JSON.stringify({
+              type: 'ai_response',
+              data: aiMessage
+            }));
+          }
+        });
+      } else {
+        // If escalated, notify live agents
+        const escalationMessage = {
+          userId,
+          message: "🔔 This conversation has been escalated to a live agent. A team member will respond shortly.",
+          isFromTeam: true,
+          teamMemberName: "System"
+        };
+        const systemMessage = await storage.createChatMessage(escalationMessage);
+        
+        wss.clients.forEach((client) => {
+          if (client.readyState === WebSocket.OPEN) {
+            client.send(JSON.stringify({
+              type: 'escalation_notice',
+              data: systemMessage
+            }));
+          }
+        });
+      }
+      
+      res.json(userMessage);
     } catch (error) {
       console.error("Error creating chat message:", error);
       res.status(400).json({ message: "Invalid message data" });
