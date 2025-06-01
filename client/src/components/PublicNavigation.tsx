@@ -58,9 +58,9 @@ export function PublicNavigation() {
                 <Button>Member Portal</Button>
               </Link>
             ) : (
-              <Button onClick={() => window.location.href = '/api/login'}>
-                Member Login
-              </Button>
+              <Link href="/login">
+                <Button>Member Login</Button>
+              </Link>
             )}
           </div>
 
@@ -98,12 +98,9 @@ export function PublicNavigation() {
                 <Button className="w-full mt-2">Member Portal</Button>
               </Link>
             ) : (
-              <Button 
-                className="w-full mt-2"
-                onClick={() => window.location.href = '/api/login'}
-              >
-                Member Login
-              </Button>
+              <Link href="/login">
+                <Button className="w-full mt-2">Member Login</Button>
+              </Link>
             )}
           </div>
         </div>

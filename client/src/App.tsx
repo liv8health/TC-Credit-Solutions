@@ -8,6 +8,7 @@ import { useAuth } from "@/hooks/useAuth";
 import Landing from "@/pages/Landing";
 import Home from "@/pages/Home";
 import Portal from "@/pages/Portal";
+import BrandedLogin from "@/pages/BrandedLogin";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -16,7 +17,10 @@ function Router() {
   return (
     <Switch>
       {isLoading || !isAuthenticated ? (
-        <Route path="/" component={Landing} />
+        <>
+          <Route path="/" component={Landing} />
+          <Route path="/login" component={BrandedLogin} />
+        </>
       ) : (
         <>
           <Route path="/" component={Home} />
