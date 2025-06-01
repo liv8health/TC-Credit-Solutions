@@ -376,7 +376,7 @@ export default function Landing() {
             <Button 
               size="lg" 
               className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-xl px-12 py-6"
-              onClick={() => window.open('http://bit.ly/TCCreditBlueprint', '_blank')}
+              onClick={() => window.open('https://sqr.co/TCCreditCall/', '_blank')}
             >
               Schedule Call
             </Button>
