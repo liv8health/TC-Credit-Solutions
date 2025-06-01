@@ -234,22 +234,22 @@ export default function Landing() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
+                name: "Damieon",
+                role: "Client",
+                content: "I'm beyond thankful for my Mother's Prayers & that have kept me safe until this day! Thanks to my lady that has kept me focused whenever I wanted to derail from the mission! Tiffany @tccreditsolutions has taught me everything I know about credit... When we began our journey my fico credit score was 545 now my score is at 770!!!",
+                initials: "D"
+              },
+              {
+                name: "Brittney",
+                role: "Homeowner", 
+                content: "January of 2023 I reached out to Tiffany to help me get my credit together. I had 3 goals 1. Buy a house 2. A travel card with a high limit and 3. A regular card with a high limit. I stayed consistent, I got rid of debt, I kept my balances below 10%... on March 4, 2025 I checked that first goal off of my to do list!!! When we started this I had 6-7 collections on my credit, today I have 0! She has removed over 60 accounts, inquiries included. Thank you so much Tiff!!!!",
+                initials: "B"
+              },
+              {
                 name: "David Smith",
                 role: "Contractor",
                 content: "I was skeptical at first, only because I've paid for services in the past and they were a total rip off! In the first 45 days I had things falling off! They are the real deal! Thanks TC Credit!",
                 initials: "DS"
-              },
-              {
-                name: "Mary Jane",
-                role: "Mompreneur", 
-                content: "Very smooth process! I uploaded my documents and they were working on my credit within 24 hours!",
-                initials: "MJ"
-              },
-              {
-                name: "John Carrey",
-                role: "Business Owner",
-                content: "They got my student loans and repo off! Man o Man I can't thank TC Credit enough!!! I love you guys! Thanks for putting up with my impatience at times haha.",
-                initials: "JC"
               }
             ].map((testimonial, index) => (
               <Card key={index} className="bg-card">
