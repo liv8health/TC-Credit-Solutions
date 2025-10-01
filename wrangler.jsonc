@@ -1,0 +1,5 @@
+{
+  "name": "your-worker-name",
+  "compatibility_date": "2025-09-30",
+  "main": "src/index.ts" // <--- Update this path
+}
