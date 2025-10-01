@@ -1,6 +1,7 @@
 name = "rest-express-worker"
 main = "dist/index.js"
 compatibility_date = "2024-05-01"
+nodejs_compat = true
 
 # The 'type = "javascript"' setting is optional but can be explicitly set
 # if you are deploying a simple, built Worker file.
@@ -13,3 +14,5 @@ compatibility_date = "2024-05-01"
 [site]
 bucket = "dist/public"
 # This path matches the output of your Vite build: "../dist/public/..."
+# wrangler.toml
+...
