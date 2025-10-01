@@ -1,5 +1,5 @@
 {
-  "name": "your-worker-name",
+"name": "jena-test-tc",
   "compatibility_date": "2025-09-30",
   "main": "src/index.ts" // <--- Update this path
 }
